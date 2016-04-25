@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js'></script>
+</head>
+<body>
+    <script>
+        function check(a, b) {
+            let e = new Error(`expected ${JSON.stringify(b)}, got ${JSON.stringify(a)}`);
+            if (typeof a !== 'object' && typeof b !== 'object') {
+                if (a !== b) {
+                    throw e;
+                }
+            }
+            else {
+                if (JSON.stringify(a) !== JSON.stringify(b)) {
+                    throw e;
+                }
+            }
+            console.log(`PASSED: expected ${JSON.stringify(b)}, got ${JSON.stringify(a)}`);
+        }
+        mocha.setup('bdd');
+    </script>
+    <div id="mocha"></div>
+    <script src='school.js'></script>
+    <script src="./tests/school.js"></script>
+    <script src="./tests/students.js"></script>
+    <script src="./tests/groups.js"></script>
+    <script src="./tests/serialization.js"></script>
+    <script src="./tests/priors.js"></script>
+    <script src="./tests/problem.js"></script>
+    <script>
+        mocha.run();
+    </script>
+        
+</body>
