@@ -93,7 +93,7 @@ var School = function(serialized_data) {
 
     /**
      * Родительский класс {Student} и {Mentor}
-     * Отвечает за работу с приоритезиованными списками
+     * Отвечает за работу с приоритизиованными списками
      */
     class Person extends SchoolObject {
         
@@ -103,9 +103,9 @@ var School = function(serialized_data) {
         }
         
         /**
-         * Сохраняет приоритезиованный список
+         * Сохраняет приоритизиованный список
          * 
-         * @param {Array} приоритезиованный список,
+         * @param {Array} приоритизиованный список,
          * состоит из объектов {Person} в порядке убывания их
          * приоритета для @this
          */
@@ -122,7 +122,7 @@ var School = function(serialized_data) {
         /**
          * 
          * @param {Person}
-         * @returns {Number} место person в приоритезиованном списке @this
+         * @returns {Number} место person в приоритизиованном списке @this
          */
         getPrior(person) {
             if (isStudent(this)) {
@@ -519,7 +519,7 @@ var School = function(serialized_data) {
      * Построение матрицы
      * 
      * @return матрица, где строки соответствуют студентам, а столбцы - менторам
-     * в ячейках записана стоимость пары i строка и j столбец - сумма мест в приоритезиованных списках друг друга
+     * в ячейках записана стоимость пары i строка и j столбец - сумма мест в приоритизиованных списках друг друга
      */
     function precalc() {
         let matrix = [];
@@ -708,16 +708,16 @@ var School = function(serialized_data) {
     
     /**
      * @private
-     * Проверяет приоритезиованный список студента на валидность
+     * Проверяет приоритизиованный список студента на валидность
      * 
      */
     function validateStudentPriorityList(list) {
         if (!isArray(list)) {
-            throw new Error('Приоритезированный список должен быть массивом');
+            throw new Error('приоритизированный список должен быть массивом');
         }
         let non_mentor = list.find((element) => !isMentor(element));
         if (non_mentor !== undefined) {
-            throw new Error('В приоритезиованном списке студента найден элемент, не являющийся ментором: ', non_mentor);
+            throw new Error('В приоритизиованном списке студента найден элемент, не являющийся ментором: ', non_mentor);
         }
         if (!checkElementsUnicity) {
             throw new Error('Не все менторы в списке уникальны');
@@ -726,16 +726,16 @@ var School = function(serialized_data) {
     
     /**
      * @private
-     * Проверяет приоритезиованный список ментора на валидность
+     * Проверяет приоритизиованный список ментора на валидность
      * 
      */
     function validateMentorPriorityList(list) {
         if (!isArray(list)) {
-            throw new Error('Приоритезированный список должен быть массивом');
+            throw new Error('приоритизированный список должен быть массивом');
         }
         let non_student = list.find((element) => !isStudent(element));
         if (non_student !== undefined) {
-            throw new Error('В приоритезиованном списке ментора найден элемент, не являющийся студентом: ', non_mentor);
+            throw new Error('В приоритизиованном списке ментора найден элемент, не являющийся студентом: ', non_mentor);
         }
         if (!checkElementsUnicity) {
             throw new Error('Не все студенты в списке уникальны');
